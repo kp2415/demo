@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 1
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Title</ion-label>
+        <ion-input [(ngModel)]="title" placeholder="Title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-input [(ngModel)]="description" placeholder="Description"></ion-input>
+      </ion-item>
+      <div class="textCenter">
+        <ion-button color="success" (click)="save()">Save</ion-button>
+      </div>
+      
+      <table *ngIf="notes?.length>0" style="width:100%">
+        <tr>
+          <th (click)="sort('title')">Title <ion-icon name="caret-down"></ion-icon></th>
+          <th (click)="sort('desc')">Description <ion-icon name="caret-down"></ion-icon></th>
+          <th>Action</th>
+        </tr>
+        <tr *ngFor="let x of notes;">
+          <td>{{x.title}}</td>
+          <td>{{x.description}}</td>
+          <td> <ion-icon color="danger" name="trash-bin"(click)="delete(x)"></ion-icon>
+          </td>
+        </tr>
+      </table>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+</ion-content>
